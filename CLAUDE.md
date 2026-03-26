@@ -13,9 +13,24 @@ The special `.github` repository for the Techne-Analytics GitHub org. Contains d
 - **Labels**: defined in `.github/labels.yml` — edit there, not in GitHub UI
 - **Templates**: YAML-based issue forms, Markdown PR templates
 
+## Commands
+
+```bash
+# Trigger label sync manually
+gh workflow run "Sync Labels" --repo Techne-Analytics/.github
+
+# Check sync status
+gh run list --repo Techne-Analytics/.github --workflow="Sync Labels" --limit 3
+```
+
+## Secrets
+
+- `ORG_GITHUB_TOKEN` — PAT with `repo` scope, used by label-sync to write labels across org repos
+
 ## Editing guidelines
 
 - Keep templates minimal — repos can override with their own
 - Label names use `type:`, `priority:`, `status:` prefixes for consistency
 - Test YAML issue forms with GitHub's template preview before merging
 - Changes to labels.yml trigger the label-sync workflow on push to main
+- Add new repos to the matrix in `.github/workflows/label-sync.yml`
