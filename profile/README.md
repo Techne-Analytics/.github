@@ -12,4 +12,4 @@ We build AI agent solutions that automate complex business workflows — documen
 - Evaluation-first development with measurable baselines
 - Reusable patterns across engagements (not one-off builds)
 
-[techneanalytics.com](https://techneanalytics.com)
+[techneanalytics.io](https://techneanalytics.io)
