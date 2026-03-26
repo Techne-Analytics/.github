@@ -1,0 +1,23 @@
+name: Task
+description: Internal work item (chore, refactor, research, infra)
+labels: ["type: task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs to be done?
+      description: Describe the work clearly.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Done when
+      description: How do we know this is complete?
+      placeholder: |
+        - [ ] ...
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Links, related issues, or background information.

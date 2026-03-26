@@ -1,0 +1,29 @@
+name: Semantic PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate conventional commit format
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if echo "$PR_TITLE" | grep -qE '^(feat|fix|docs|chore|refactor|test|ci)(\(.+\))?!?: .+'; then
+            echo "Valid: $PR_TITLE"
+          else
+            echo "ERROR: PR title must follow conventional commits format"
+            echo ""
+            echo "  Format: type(scope): description"
+            echo "  Types:  feat, fix, docs, chore, refactor, test, ci"
+            echo "  Got:    $PR_TITLE"
+            echo ""
+            echo "  Examples:"
+            echo "    feat(catalog): add MCP server entry for Notion"
+            echo "    fix: correct schema validation for empty arrays"
+            echo "    docs(onboarding): update setup instructions"
+            exit 1
+          fi

@@ -1,0 +1,79 @@
+# Canonical label set for all Techne Analytics repositories.
+# Synced by .github/workflows/label-sync.yml on push to main.
+#
+# Naming convention:
+#   type:     — what kind of work (maps to conventional commits)
+#   priority: — urgency
+#   status:   — workflow state
+#   scope:    — area of codebase (repo-specific, add as needed)
+
+# --- Type labels (from conventional commits) ---
+- name: "type: feature"
+  color: "0E8A16"
+  description: "New functionality (feat)"
+- name: "type: bug"
+  color: "D73A4A"
+  description: "Something is broken (fix)"
+- name: "type: docs"
+  color: "0075CA"
+  description: "Documentation only (docs)"
+- name: "type: chore"
+  color: "CFD3D7"
+  description: "Maintenance, dependencies, config (chore)"
+- name: "type: refactor"
+  color: "D4C5F9"
+  description: "Code restructuring, no behavior change (refactor)"
+- name: "type: test"
+  color: "BFD4F2"
+  description: "Test additions or changes (test)"
+- name: "type: ci"
+  color: "EDEDED"
+  description: "CI/CD pipeline changes (ci)"
+- name: "type: task"
+  color: "C5DEF5"
+  description: "Internal work item"
+
+# --- Priority labels ---
+- name: "priority: critical"
+  color: "B60205"
+  description: "Must be resolved immediately"
+- name: "priority: high"
+  color: "D93F0B"
+  description: "Should be resolved this sprint"
+- name: "priority: medium"
+  color: "FBCA04"
+  description: "Normal priority"
+- name: "priority: low"
+  color: "0E8A16"
+  description: "Nice to have, no rush"
+
+# --- Status labels ---
+- name: "status: blocked"
+  color: "B60205"
+  description: "Waiting on external dependency or decision"
+- name: "status: in-progress"
+  color: "FBCA04"
+  description: "Actively being worked on"
+- name: "status: needs-review"
+  color: "0075CA"
+  description: "Ready for review"
+- name: "status: needs-info"
+  color: "D876E3"
+  description: "Waiting for more information from reporter"
+
+# --- Special labels ---
+- name: "breaking"
+  color: "B60205"
+  description: "Introduces breaking changes"
+- name: "good first issue"
+  color: "7057FF"
+  description: "Good for newcomers"
+- name: "duplicate"
+  color: "CFD3D7"
+  description: "Duplicate of another issue"
+- name: "wontfix"
+  color: "FFFFFF"
+  description: "Will not be addressed"
+- name: "skip-changelog"
+  color: "EDEDED"
+  description: "Exclude from auto-generated release notes"

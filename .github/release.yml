@@ -1,0 +1,33 @@
+# Auto-generated release notes configuration
+# Groups commits by conventional commit type into release note categories
+# Docs: https://docs.github.com/en/repositories/releasing-on-github/automatically-generated-release-notes
+
+changelog:
+  exclude:
+    labels:
+      - "skip-changelog"
+    authors:
+      - "dependabot"
+  categories:
+    - title: "Breaking Changes"
+      labels:
+        - "breaking"
+    - title: "New Features"
+      labels:
+        - "type: feature"
+    - title: "Bug Fixes"
+      labels:
+        - "type: bug"
+    - title: "Documentation"
+      labels:
+        - "type: docs"
+    - title: "Infrastructure & CI"
+      labels:
+        - "type: chore"
+        - "type: ci"
+    - title: "Refactoring"
+      labels:
+        - "type: refactor"
+    - title: "Other Changes"
+      labels:
+        - "*"
