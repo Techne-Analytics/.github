@@ -2,7 +2,10 @@
 
 Shared Claude-readable rules for all Techne-Analytics repositories. Per-repo `CLAUDE.md` files document repo-specific content and link here for org-wide rules.
 
-> **Working in this repo specifically?** This `.github` repo also holds GitHub defaults (issue templates, PR template, labels, release config, workflows). Edits here propagate via GitHub's `.github`-repo inheritance to any Techne-Analytics repo without its own override.
+> **Working in this repo specifically?** This `.github` repo also holds the org defaults Techne-Analytics repos draw from. Three different propagation mechanisms apply:
+> - **Auto-inherits via GitHub's community-health files:** `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/`. Repos override by adding their own copy.
+> - **Synced explicitly via workflow:** `.github/labels.yml` is fanned out to org repos by `.github/workflows/label-sync.yml`.
+> - **Per-repo, by convention:** `CLAUDE.md` does NOT auto-inherit. Per-repo `CLAUDE.md` files link here via a header pointer; updates propagate when readers follow the link.
 
 ## Company context
 
@@ -31,6 +34,14 @@ Shared Claude-readable rules for all Techne-Analytics repositories. Per-repo `CL
 - **Squash merge** PRs.
 - **Co-author line:** `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`.
 
+## Code style
+
+- **TypeScript strict mode** for TS projects.
+- **Prefer Server Components** in Next.js — push `'use client'` as far down as possible.
+- **No unnecessary abstractions** — 3 similar lines > premature helper.
+- **Don't add comments, docstrings, or type annotations to code you didn't change.**
+- **Design for non-technical users (Jenn, Clay) first — technical depth second** when building internal tools.
+
 ## PR review workflow
 
 - After opening any PR on a Techne-Analytics repo: immediately invoke `pr-review-toolkit:review-pr` and address findings.
@@ -45,7 +56,7 @@ Shared Claude-readable rules for all Techne-Analytics repositories. Per-repo `CL
 
 ## Vercel gotchas
 
-- **Use the team scope** for `vercel link`. Run `vercel switch techne-analytics` first — Hobby (personal) scope can't link private org repos and silently misroutes the link.
+- **Use the team scope** for `vercel link`. Run `vercel teams switch techne-analytics` first — Hobby (personal) scope can't link private org repos and silently misroutes the link.
 - **Pipe secrets via stdin, never use `--value`.** The CLI echoes `--value` arguments back in error messages, leaking secrets into shell logs and conversation transcripts. Pattern: `printf '%s' "$VAL" | vercel env add KEY production`.
 - **Preview env-add via CLI is broken** in non-interactive mode — demands a `<gitbranch>` arg even when help says it's optional. Use the Vercel UI for preview env vars, or skip preview for keys only the production runtime needs.
 
@@ -83,5 +94,5 @@ If any condition is unmet, ask first. The "don't deploy to production" rule stil
 ## Editing this file
 
 - Run `claude-md-management:claude-md-improver` on every edit before pushing.
-- Per-repo CLAUDE.md files should NOT duplicate sections from this file — they should link here via the header pointer documented in the spec (`docs/superpowers/specs/2026-05-01-tec-327-contributor-baseline-design.md` in techne-sales-pipeline).
+- Per-repo `CLAUDE.md` files should NOT duplicate sections from this file — they should link here via a header pointer. Pattern documented in [TEC-327](https://linear.app/techne-analytics/issue/TEC-327).
 - Label-sync workflow + release notes config remain in `.github/`; they don't need a section here.
