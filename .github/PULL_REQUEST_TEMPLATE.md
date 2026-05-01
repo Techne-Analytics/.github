@@ -1,3 +1,5 @@
+<!-- Linear: <paste TEC-XXX url or "n/a" if no ticket> -->
+
 ## Summary
 <!-- What changed and why (1-3 bullets) -->
 

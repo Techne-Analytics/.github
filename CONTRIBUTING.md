@@ -22,6 +22,7 @@ All branches must use a prefix:
 | `refactor/` | Restructuring without behavior change |
 | `chore/` | Tooling, CI, dependencies, config |
 | `test/` | Adding or updating tests |
+| `ci/` | CI/workflow changes |
 
 Example: `feat/scaffold-p2-template`
 
