@@ -38,10 +38,10 @@ Shared Claude-readable rules for all Techne-Analytics repositories. Per-repo `CL
 
 Source: [`forrestchang/andrej-karpathy-skills` — karpathy-guidelines](https://github.com/forrestchang/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md). Inlined here because they're load-bearing for every coding session — the URL is the canonical version if you want to check for updates.
 
-1. **Think before coding.** State assumptions explicitly. If multiple interpretations exist, present them — don't pick silently. If a simpler approach exists, say so. If something's unclear, stop and ask.
+1. **Think before coding.** State assumptions explicitly. If multiple interpretations exist, present them — don't pick silently. If a simpler approach exists, say so; push back when warranted. If something's unclear, stop and ask.
 2. **Simplicity first.** Minimum code that solves the problem. No features beyond what was asked. No abstractions for single-use code. No "flexibility" that wasn't requested. No error handling for impossible scenarios. If you wrote 200 lines and it could be 50, rewrite it.
-3. **Surgical changes.** Touch only what you must. Don't "improve" adjacent code, comments, or formatting. Don't refactor things that aren't broken. Match existing style even if you'd do it differently. Remove imports/variables/functions that *your* changes orphaned — but don't delete pre-existing dead code unless asked. Every changed line should trace directly to the user's request.
-4. **Goal-driven execution.** Define success criteria, loop until verified. "Add validation" → "Write tests for invalid inputs, then make them pass." "Fix the bug" → "Write a test that reproduces it, then make it pass." For multi-step tasks, state a brief plan with verification checks.
+3. **Surgical changes.** Touch only what you must. Don't "improve" adjacent code, comments, docstrings, type annotations, or formatting. Don't refactor things that aren't broken. Match existing style even if you'd do it differently. If you notice unrelated dead code, mention it — don't delete it. Remove imports/variables/functions that *your* changes orphaned, but don't remove pre-existing dead code unless asked. Every changed line should trace directly to the user's request.
+4. **Goal-driven execution.** Define success criteria, loop until verified. "Add validation" → "Write tests for invalid inputs, then make them pass." "Fix the bug" → "Write a test that reproduces it, then make it pass." "Refactor X" → "Ensure tests pass before and after." For multi-step tasks, state a brief plan with verification checks.
 
 ## Code style
 
