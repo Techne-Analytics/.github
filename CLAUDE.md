@@ -34,12 +34,21 @@ Shared Claude-readable rules for all Techne-Analytics repositories. Per-repo `CL
 - **Squash merge** PRs.
 - **Co-author line:** `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`.
 
+## Behavioral rules (Karpathy)
+
+Source: [`forrestchang/andrej-karpathy-skills` — karpathy-guidelines](https://github.com/forrestchang/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md). Inlined here because they're load-bearing for every coding session — the URL is the canonical version if you want to check for updates.
+
+1. **Think before coding.** State assumptions explicitly. If multiple interpretations exist, present them — don't pick silently. If a simpler approach exists, say so. If something's unclear, stop and ask.
+2. **Simplicity first.** Minimum code that solves the problem. No features beyond what was asked. No abstractions for single-use code. No "flexibility" that wasn't requested. No error handling for impossible scenarios. If you wrote 200 lines and it could be 50, rewrite it.
+3. **Surgical changes.** Touch only what you must. Don't "improve" adjacent code, comments, or formatting. Don't refactor things that aren't broken. Match existing style even if you'd do it differently. Remove imports/variables/functions that *your* changes orphaned — but don't delete pre-existing dead code unless asked. Every changed line should trace directly to the user's request.
+4. **Goal-driven execution.** Define success criteria, loop until verified. "Add validation" → "Write tests for invalid inputs, then make them pass." "Fix the bug" → "Write a test that reproduces it, then make it pass." For multi-step tasks, state a brief plan with verification checks.
+
 ## Code style
+
+General coding behavior is in [Behavioral rules (Karpathy)](#behavioral-rules-karpathy) above. The bullets below are the rules that are actually Techne-specific.
 
 - **TypeScript strict mode** for TS projects.
 - **Prefer Server Components** in Next.js — push `'use client'` as far down as possible.
-- **No unnecessary abstractions** — 3 similar lines > premature helper.
-- **Don't add comments, docstrings, or type annotations to code you didn't change.**
 - **Design for non-technical users (Jenn, Clay) first — technical depth second** when building internal tools.
 
 ## PR review workflow
