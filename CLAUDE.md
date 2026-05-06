@@ -54,8 +54,16 @@ General coding behavior is in [Behavioral rules (Karpathy)](#behavioral-rules-ka
 ## PR review workflow
 
 - After opening any PR on a Techne-Analytics repo: immediately invoke `pr-review-toolkit:review-pr` and address findings.
-- Wait for Codex (and Copilot, if configured) to submit their reviews.
-- Address all review feedback in subsequent commits with replies linking to fix commits.
+- Wait for Codex (and Copilot, if configured) to submit their reviews — then address all feedback in subsequent commits with replies linking to fix commits.
+
+### Codex specifics
+
+Codex (`chatgpt-codex-connector[bot]`) is enabled org-wide on Techne-Analytics repos.
+
+- **Where it posts:** to the **issue-comment API**, NOT the PR-review API. `pulls/{N}/reviews` and `pulls/{N}/comments` silently miss every Codex finding. Audit recipe: `gh api repos/{owner}/{repo}/issues/{N}/comments --jq '.[] | select(.user.login == "chatgpt-codex-connector[bot]")'`. The 👍 reaction case (no suggestions) lives at `issues/{N}/reactions`.
+- **Severity badges:** **P1** (orange) is blocking. **P2** (yellow) must be addressed inline OR filed as a follow-up ticket linked from the PR. **P3** (green) is judgment.
+- **Re-trigger:** Codex runs once on PR open. Push commits do NOT auto-re-run. Comment `@codex review` after substantive pushes; `@codex address that feedback` to have Codex push a fix commit for small findings.
+- **When Codex disagrees with `pr-review-toolkit`:** they catch different things. Default to addressing both — the cost of a follow-up commit is low, the cost of a missed P1 is real.
 
 ## Testing discipline
 
